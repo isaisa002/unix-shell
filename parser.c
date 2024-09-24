@@ -10,9 +10,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+//lll
 
 #define READ_CHAR *(*cur_buf)++ = *(*cur)++
 #define SKIP_CHAR (*cur)++
+
 
 static void read_single_quote(char ** cur, char ** cur_buf) {
     SKIP_CHAR;
