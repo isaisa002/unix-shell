@@ -1,0 +1,21 @@
+# CMake generation dependency list for this directory.
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/CMakeLists.txt
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/build/CMakeFiles/3.28.1/CMakeCCompiler.cmake
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/build/CMakeFiles/3.28.1/CMakeRCCompiler.cmake
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/build/CMakeFiles/3.28.1/CMakeSystem.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeCInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeRCInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC-C.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-MSVC-C.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-MSVC.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake

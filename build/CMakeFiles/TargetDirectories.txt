@@ -1,0 +1,3 @@
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/build/CMakeFiles/unix_shell.dir
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/isach/Downloads/4th year/10th semester - Fall 2024/COEN 346/PROG A1/unix-shell/build/CMakeFiles/ZERO_CHECK.dir
