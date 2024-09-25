@@ -6,6 +6,13 @@
 #include "utils.h"
 
 
+#include <unistd.h> // for fork() and execvp()
+#include <sys/types.h> // for pid_t
+#include <sys/wait.h> // for wait()
+
+
+
+
 void terminate(char *line) {
     if (line)
         free(line); //release memory allocated to line pointer
@@ -69,19 +76,51 @@ int main(void) {
                 continue;
             }
             else {
-                /* there is a command to execute, let's print the sequence */
+        
                 if(l->in !=0) printf("in: %s\n", l->in);
                 if(l->out != 0) printf("out: %s\n", l->out);
                 printf("bg: %d\n", l->bg);
 
                 /* Display each command of the pipe */
+                 pid_t pid=fork();
+                    printf("A child has been created\n");
+
                 for (i=0; l->seq[i]!=0; i++) {
+                   
                     char **cmd = l->seq[i];
                     printf("seq[%d]: ", i);
+                   
+                   
                     for (j=0; cmd[j]!=0; j++) {
                         printf("'%s' ", cmd[j]);
+
+
+
+                        
                     }
                     printf("\n");
+
+                   
+                    if (pid == 0) { //  In Child process 
+                        // Execute the command
+                        if (execvp(cmd[0], cmd) == -1) {
+                            perror("execvp failed"); // Error handling for execvp 
+                            exit(EXIT_FAILURE); // Exit child process on failure 
+                        }
+                    } else if (pid > 0) { // In Parent process
+                        if (!l->bg) { // If not a background process
+                            int status;
+                            waitpid(pid, &status, 0); // Wait for the child process to finish 
+                        } else {
+                            printf("Started background process with PID: %d\n", pid); // Notify about background process 
+                        }
+                    } else {
+                        perror("fork failed"); // Error handling for fork 
+                    }
+
+
+
+
                 }
 
             }

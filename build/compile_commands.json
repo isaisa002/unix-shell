@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/user/coen346_programmingass1/unix-shell/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/cc   -g -std=gnu11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/unix_shell.dir/main.c.o -c /Users/user/coen346_programmingass1/unix-shell/main.c",
+  "file": "/Users/user/coen346_programmingass1/unix-shell/main.c",
+  "output": "CMakeFiles/unix_shell.dir/main.c.o"
+},
+{
+  "directory": "/Users/user/coen346_programmingass1/unix-shell/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/cc   -g -std=gnu11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/unix_shell.dir/parser.c.o -c /Users/user/coen346_programmingass1/unix-shell/parser.c",
+  "file": "/Users/user/coen346_programmingass1/unix-shell/parser.c",
+  "output": "CMakeFiles/unix_shell.dir/parser.c.o"
+},
+{
+  "directory": "/Users/user/coen346_programmingass1/unix-shell/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/cc   -g -std=gnu11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/unix_shell.dir/utils.c.o -c /Users/user/coen346_programmingass1/unix-shell/utils.c",
+  "file": "/Users/user/coen346_programmingass1/unix-shell/utils.c",
+  "output": "CMakeFiles/unix_shell.dir/utils.c.o"
+}
+]
