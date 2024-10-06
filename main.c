@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe6e001 (yes)
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
