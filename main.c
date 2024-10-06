@@ -93,7 +93,7 @@ int main(void) {
                    
                    
                     for (j=0; cmd[j]!=0; j++) {
-                        printf("Here's the command: '%s' ", cmd[j]);   
+                        printf("'%s' ", cmd[j]);   
                     }
                     printf("\n");
 
@@ -107,10 +107,12 @@ int main(void) {
                             exit(EXIT_FAILURE); // Exit child process on failure 
                         }
                     } else if (pid > 0) { // In Parent process
-                        if (!l->bg) { // If not a background process
+                        if (!l->bg) { // Not a background process: the command isn't followed by &
+                            printf("\nWaiting for child %d to finish\n", pid);
                             int status;
                             waitpid(pid, &status, 0); // Wait for the child process to finish 
                         } else {
+                            //bg == 0, command followed by & meaning should run in background
                             printf("Started background process with PID: %d\n", pid); // Notify about background process 
                         }
                     } else {
