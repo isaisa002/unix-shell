@@ -76,49 +76,49 @@ int main(void) {
                 continue;
             }
             else {
-        /* there is a command to execute, let's print the sequence */
+       /* Print the sequence once (in the parent process before fork) */
                 if(l->in !=0) printf("in: %s\n", l->in);
                 if(l->out != 0) printf("out: %s\n", l->out);
                 printf("bg: %d\n", l->bg);
 
                 /* Display each command of the pipe */
-                printf("\n[Parent ID = %d] I am the root parent\n", (int) getpid());
-                pid_t pid=fork();
-                
-
                 for (i=0; l->seq[i]!=0; i++) {
-                   
                     char **cmd = l->seq[i];
                     printf("seq[%d]: ", i);
-                   
-                   
                     for (j=0; cmd[j]!=0; j++) {
-                        printf("'%s' ", cmd[j]);   
+                        printf("'%s' ", cmd[j]);
                     }
                     printf("\n");
+                }
 
-                   
-                    if (pid == 0) { //  In Child process 
-                        printf("\n[Child ID = %d] My parent is [%d]\n", (int) getpid(), (int) getppid());
+                printf("\n[Parent ID = %d] I am the root parent\n", (int)getpid());
+
+                pid_t pid = fork();
+
+                if (pid == 0) { //  In Child process
+                    for (i = 0; l->seq[i] != 0; i++) {
+                        char **cmd = l->seq[i];
+                        printf("\n[Child ID = %d] My parent is [%d]\n", (int)getpid(), (int)getppid());
 
                         // Execute the command
                         if (execvp(cmd[0], cmd) == -1) {
-                            perror("execvp failed"); // Error handling for execvp 
-                            exit(EXIT_FAILURE); // Exit child process on failure 
+                            perror("execvp failed"); // Error handling for execvp
+                            exit(EXIT_FAILURE); // Exit child process on failure
                         }
-                    } else if (pid > 0) { // In Parent process
-                        if (!l->bg) { // Not a background process: the command isn't followed by &
-                            printf("\nWaiting for child %d to finish\n", pid);
-                            int status;
-                            waitpid(pid, &status, 0); // Wait for the child process to finish 
-                        } else {
-                            //bg == 0, command followed by & meaning should run in background
-                            printf("Started background process with PID: %d\n", pid); // Notify about background process 
-                        }
-                    } else {
-                        perror("fork failed"); // Error handling for fork 
-                        exit(1);
                     }
+                } else if (pid > 0) { // In Parent process
+                    if (!l->bg) { // Not a background process
+                        printf("\nWaiting for child %d to finish\n", pid);
+                        int status;
+                        waitpid(pid, &status, 0); // Wait for the child process to finish
+                    } else {
+                        // bg == 0, command followed by & meaning should run in background
+                        printf("Started background process with PID: %d\n", pid); // Notify about background process
+                    }
+                } else {
+                    perror("fork failed"); // Error handling for fork
+                    exit(1);
+                }
 
 
 
