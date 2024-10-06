@@ -1,4 +1,3 @@
-//okok
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -77,14 +76,15 @@ int main(void) {
                 continue;
             }
             else {
-        
+        /* there is a command to execute, let's print the sequence */
                 if(l->in !=0) printf("in: %s\n", l->in);
                 if(l->out != 0) printf("out: %s\n", l->out);
                 printf("bg: %d\n", l->bg);
 
                 /* Display each command of the pipe */
-                 pid_t pid=fork();
-                    printf("Child  has been created\n");
+                printf("\n[Parent ID = %d] I am the root parent\n", (int) getpid());
+                pid_t pid=fork();
+                
 
                 for (i=0; l->seq[i]!=0; i++) {
                    
@@ -93,16 +93,14 @@ int main(void) {
                    
                    
                     for (j=0; cmd[j]!=0; j++) {
-                        printf("'%s' ", cmd[j]);
-
-
-
-                        
+                        printf("Here's the command: '%s' ", cmd[j]);   
                     }
                     printf("\n");
 
                    
                     if (pid == 0) { //  In Child process 
+                        printf("\n[Child ID = %d] My parent is [%d]\n", (int) getpid(), (int) getppid());
+
                         // Execute the command
                         if (execvp(cmd[0], cmd) == -1) {
                             perror("execvp failed"); // Error handling for execvp 
@@ -117,6 +115,7 @@ int main(void) {
                         }
                     } else {
                         perror("fork failed"); // Error handling for fork 
+                        exit(1);
                     }
 
 
