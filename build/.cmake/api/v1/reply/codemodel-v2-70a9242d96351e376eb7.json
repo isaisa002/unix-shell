@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "unix_shell::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-unix_shell-Debug-58d595042cecb3995c86.json",
+					"jsonFile" : "target-unix_shell-Debug-fa44f9d6db112419f701.json",
 					"name" : "unix_shell",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/user/coen346_programmingass1/unix-shell/build",
-		"source" : "/Users/user/coen346_programmingass1/unix-shell"
+		"build" : "/home/isabelle/Downloads/COEN 346 A1/unix-shell/build",
+		"source" : "/home/isabelle/Downloads/COEN 346 A1/unix-shell"
 	},
 	"version" : 
 	{

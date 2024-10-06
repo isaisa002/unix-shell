@@ -84,7 +84,7 @@ int main(void) {
 
                 /* Display each command of the pipe */
                  pid_t pid=fork();
-                    printf("A child has been created\n");
+                    printf("Child  has been created\n");
 
                 for (i=0; l->seq[i]!=0; i++) {
                    

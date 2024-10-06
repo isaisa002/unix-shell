@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk"
+					"fragment" : "-g -std=gnu11"
 				}
 			],
 			"language" : "C",
