@@ -91,26 +91,27 @@ int main(void) {
                     printf("\n");
                 }
 
-                printf("\n[Parent ID = %d] I am the root parent\n", (int)getpid());
+                printf("\n[Parent ID = %d] \n", (int)getpid());
 
                 pid_t pid = fork();
 
                 if (pid == 0) { //  In Child process
                     for (i = 0; l->seq[i] != 0; i++) {
                         char **cmd = l->seq[i];
-                        printf("\n[Child ID = %d] My parent is [%d]\n", (int)getpid(), (int)getppid());
-
-                        // Execute the command
+                        printf("\nIn Child %d, Parent is [%d] \n", (int)getpid(), (int)getppid());
+                        // Execute the command and return error if failed
                         if (execvp(cmd[0], cmd) == -1) {
                             perror("execvp failed"); // Error handling for execvp
                             exit(EXIT_FAILURE); // Exit child process on failure
                         }
+                        
                     }
                 } else if (pid > 0) { // In Parent process
                     if (!l->bg) { // Not a background process
                         printf("\nWaiting for child %d to finish\n", pid);
                         int status;
                         waitpid(pid, &status, 0); // Wait for the child process to finish
+                        printf("\nChild finished with status: %d\n", status);
                     } else {
                         // bg == 0, command followed by & meaning should run in background
                         printf("Started background process with PID: %d\n", pid); // Notify about background process
@@ -128,4 +129,5 @@ int main(void) {
             }
         }
     }
-}
+
+
