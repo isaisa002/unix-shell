@@ -64,19 +64,20 @@ printf("\n------LIST OF JOBS IN BACKGROUNG--------:\n");
 }
 
 
-// Flag a job as Finished
-void job_finished(pid_t pid) {
+// Flag a job as Finished and return it's index to directly delete with index
+int job_finished(pid_t pid) {
     for (int i = 0; i < job_count; i++) {
         if (job_table[i] != NULL && job_table[i]->pid == pid) {
             job_table[i]->status = 0;  // Mark the job as finished
             printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, job_table[i]->pid, job_table[i]->command,
                    job_table[i]->status ? "Running" : "Finished");
-        }            return;
+        }            return i;  // return index of finished job
         }
-    }
+return -1; // return if no job with given pid
+}
 
 
-//Delete a job in the list when finished
+//Delete a job in the list when finished according to index
 void delete_job(int index) {
    //check if index exists
     if (index < 0 || index >= job_count || job_table[index] == NULL) {
@@ -214,13 +215,25 @@ int main(void) {
                         int status;
                         waitpid(pid, &status, 0); // Wait for the child process to finish
                         printf("\nCommand Complete by Child %d with status: %d\n", pid, status);
-                        job_finished(pid);
-                        delete_job(pid);
+                        
+                        //take index of finished job to directly delete
+                        int index = job_finished(pid);
+                        if(index >=0){
+                            //minimum index is 0
+                            printf("\nproblem here\n");
+                            delete_job(index);
+                        }
+                        
+                        
+                        
                         
                     } else {
                         // bg == 0, command followed by & meaning should run in background
                         printf("Started background process with PID: %d\n", pid); // Notify about background process
+                        
+
                         add_job(pid,line); 
+                        printf("\nproblem here\n");
                     }
                 } else {
                     perror("fork failed"); // Error handling for fork
