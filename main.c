@@ -94,9 +94,6 @@ int main(void) {
                     for (j=0; cmd[j]!=0; j++) {
                         printf("'%s' ", cmd[j]);
 
-
-
-                        
                     }
                     printf("\n");
 
@@ -115,7 +112,7 @@ int main(void) {
                             printf("Started background process with PID: %d\n", pid); // Notify about background process 
                         }
                     } else {
-                        perror("fork failed"); // Error handling for fork 
+                        perror("Fork process failed due to error"); // Error handling for fork 
                     }
 
 
