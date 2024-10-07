@@ -68,6 +68,7 @@ printf("\n------LIST OF JOBS IN BACKGROUNG--------:\n");
 int job_finished(pid_t pid) {
     for (int i = 0; i < job_count; i++) {
         if (job_table[i] != NULL && job_table[i]->pid == pid) {
+            
             job_table[i]->status = 0;  // Mark the job as finished
             printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, job_table[i]->pid, job_table[i]->command,
                    job_table[i]->status ? "Running" : "Finished");
@@ -202,10 +203,15 @@ int main(void) {
                     for (i = 0; l->seq[i] != 0; i++) {
                         char **cmd = l->seq[i];
                         printf("\nIn Child %d, Parent is [%d] \n", (int)getpid(), (int)getppid());
+                    
+                    
+
+
+
                         // Execute the command and return error if failed
                         if (execvp(cmd[0], cmd) == -1) {
                             perror("execvp failed"); // Error handling for execvp
-                            exit(EXIT_FAILURE); // Exit child process on failure
+                            exit(1); // Exit child process on failure
                         }
                         
                     }
@@ -230,7 +236,6 @@ int main(void) {
                     } else {
                         // bg == 0, command followed by & meaning should run in background
                         printf("Started background process with PID: %d\n", pid); // Notify about background process
-                        
 
                         add_job(pid,line); 
                         printf("\nproblem here\n");
