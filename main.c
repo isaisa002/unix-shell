@@ -20,14 +20,14 @@ char *command;       // Process command
 int status;         // Flag to check if running or finished
 };
 
-struct job *job_table[JOBS_LIST_SIZE]={NULLL}; // array of pointers to job struct
+struct job *job_table[JOBS_LIST_SIZE]={NULL}; // array of pointers to job struct
 int job_count = 0; // Track number of jobs and their position in table
 
 // Adding a process in list of background processes
 void add_job(pid_t pid, char *command){
 //Ensure that less than 100 jobs in background
     if (job_count >= JOBS_LIST_SIZE){
-    fprint(stderr, "Exceeds maximum capacity of background jobs\n");
+    fprintf(stderr, "Exceeds maximum capacity of background jobs\n");
     exit(1);
 }
     //Allocate memory for a job struct
@@ -55,10 +55,10 @@ void add_job(pid_t pid, char *command){
 void print_jobs(){
 printf("\n------LIST OF JOBS IN BACKGROUNG--------:\n");
     for (int i = 0; i < job_count; i++) {
-        struct job *current = job_table[i];
-        if (current != NULL && current->status) {
-            printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, current->pid, current->command,
-                   current->status ? "Running" : "Finished");
+        
+        if (job_table[i] != NULL && job_table[i]->status) {
+            printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, job_table[i]->pid, job_table[i]->command,
+                   job_table[i]->status ? "Running" : "Finished");
         }
     }
 }
@@ -69,8 +69,8 @@ void job_finished(pid_t pid) {
     for (int i = 0; i < job_count; i++) {
         if (job_table[i] != NULL && job_table[i]->pid == pid) {
             job_table[i]->status = 0;  // Mark the job as finished
-            printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, current->pid, current->command,
-                   current->status ? "Running" : "Finished");
+            printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, job_table[i]->pid, job_table[i]->command,
+                   job_table[i]->status ? "Running" : "Finished");
         }            return;
         }
     }
@@ -214,8 +214,8 @@ int main(void) {
                         int status;
                         waitpid(pid, &status, 0); // Wait for the child process to finish
                         printf("\nCommand Complete by Child %d with status: %d\n", pid, status);
-                        job_finished();
-                        delete_job();
+                        job_finished(pid);
+                        delete_job(pid);
                         
                     } else {
                         // bg == 0, command followed by & meaning should run in background
