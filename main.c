@@ -4,13 +4,11 @@
 #include <limits.h> //for INT_MAX
 #include "parser.h"
 #include "utils.h"
-
-
 #include <unistd.h> // for fork() and execvp()
 #include <sys/types.h> // for pid_t
 #include <sys/wait.h> // for wait()
-
-
+#include <fcntl.h>   // For open()
+#include <unistd.h>  // For dup(), dup2(), close()
 
 
 void terminate(char *line) {
@@ -82,45 +80,84 @@ int main(void) {
                 printf("bg: %d\n", l->bg);
 
                 /* Display each command of the pipe */
-                 pid_t pid=fork();
-                    printf("A child has been created\n");
+                // pid_t pid=fork();
+                // printf("A child has been created\n");
 
-                for (i=0; l->seq[i]!=0; i++) {
+                // for (i=0; l->seq[i]!=0; i++) {
                    
+                //     char **cmd = l->seq[i];
+                //     printf("seq[%d]: ", i);
+                   
+                //     for (j=0; cmd[j]!=0; j++) {
+                //         printf("'%s' ", cmd[j]);
+
+                //     }
+                //     printf("\n");
+
+                //yimika testing
+                for (i=0; l->seq[i]!=0; i++) {
                     char **cmd = l->seq[i];
                     printf("seq[%d]: ", i);
-                   
-                   
+                
                     for (j=0; cmd[j]!=0; j++) {
                         printf("'%s' ", cmd[j]);
-
                     }
                     printf("\n");
-
-                   
-                    if (pid == 0) { //  In Child process 
-                        // Execute the command
-                        if (execvp(cmd[0], cmd) == -1) {
-                            perror("execvp failed"); // Error handling for execvp 
-                            exit(EXIT_FAILURE); // Exit child process on failure 
-                        }
-                    } else if (pid > 0) { // In Parent process
-                        if (!l->bg) { // If not a background process
-                            int status;
-                            waitpid(pid, &status, 0); // Wait for the child process to finish 
-                        } else {
-                            printf("Started background process with PID: %d\n", pid); // Notify about background process 
-                        }
-                    } else {
-                        perror("Fork process failed due to error"); // Error handling for fork 
-                    }
-
-
-
-
+                //yimika testing
+                
+        pid_t pid = fork();
+                    
+        if (pid == 0) { //  In Child process 
+        //Yimika
+            // Handle input redirection
+            if (l->in != 0) {
+                int fd_in = open(l->in, O_RDONLY);
+                if (fd_in == -1) {
+                    perror("Error opening input file");
+                    exit(EXIT_FAILURE);
                 }
+                if (dup2(fd_in, STDIN_FILENO) == -1) {
+                    perror("Error redirecting input");
+                    exit(EXIT_FAILURE);
+                }
+                close(fd_in);
+            }
+
+            // Handle output redirection
+            if (l->out != 0) {
+                int fd_out = open(l->out, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+                if (fd_out == -1) {
+                    perror("Error opening output file");
+                    exit(EXIT_FAILURE);
+                }
+                if (dup2(fd_out, STDOUT_FILENO) == -1) {
+                    perror("Error redirecting output");
+                    exit(EXIT_FAILURE);
+                }
+                close(fd_out);
+            }
+
+            // Execute the command
+            if (execvp(cmd[0], cmd) == -1) {
+                perror("execvp failed"); // Error handling for execvp 
+                exit(EXIT_FAILURE); // Exit child process on failure 
+            }
+        //Yimika
+
+        } else if (pid > 0) { // In Parent process
+            if (!l->bg) { // If not a background process
+                int status;
+                waitpid(pid, &status, 0); // Wait for the child process to finish 
+            } else {
+                printf("Started background process with PID: %d\n", pid); // Notify about background process 
+            }
+        } else {
+            perror("Fork process failed due to error"); // Error handling for fork 
+        }
 
             }
+
         }
     }
+}
 }
