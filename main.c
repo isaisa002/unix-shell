@@ -5,10 +5,10 @@
 #include "parser.h"
 #include "utils.h"
 
-#include <unistd.h> // for fork() and execvp()
+#include <unistd.h> // for fork(), execvp(), dup(), dup2(), close()
 #include <sys/types.h> // for pid_t
 #include <sys/wait.h> // for wait()
-
+#include <fcntl.h> // For open()
 
 
 
@@ -141,7 +141,7 @@ int main(void) {
 
 
 
-//------------------------------------------------------PART 1&2 -----------------------------------
+//------------------------------------------------------PART 1,2,3 -----------------------------------
                 
                 
 
@@ -156,7 +156,7 @@ int main(void) {
                     pid_t pid = fork();
                     if (pid == 0) { // In Child process 
 
-                        //PART 3: HANDLE INPUT REDIRECTION
+        //PART 3: HANDLE INPUT REDIRECTION
                         if (l->in != 0) {
                 int fd_in = open(l->in, O_RDONLY);
                 if (fd_in == -1) {
@@ -170,7 +170,7 @@ int main(void) {
                 close(fd_in);
             }
 
-                        //PART 3: HANDLE OUTPUT REDIRECTION
+        //PART 3: HANDLE OUTPUT REDIRECTION
                            if (l->out != 0) {
                 int fd_out = open(l->out, O_WRONLY | O_CREAT | O_TRUNC, 0644);
                 if (fd_out == -1) {
@@ -188,12 +188,13 @@ int main(void) {
 
 
 
-                        //PART1: Execute the command
+        //PART1: Execute the command
                         if (execvp(command[0], command) == -1) {
                             perror("execvp failed");
                             exit(EXIT_FAILURE);
                         }
                     } else if (pid > 0) { // In Parent process
+        // PART 2: Handle background processes            
                         if (!l->bg) {   // Not a background process
                             int status;
                             printf("Command beign executed by Child %d\n", pid);
