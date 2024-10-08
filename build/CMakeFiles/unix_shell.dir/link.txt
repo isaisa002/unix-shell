@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/unix_shell.dir/main.c.o CMakeFiles/unix_shell.dir/parser.c.o CMakeFiles/unix_shell.dir/utils.c.o -o unix_shell

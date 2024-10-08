@@ -9,18 +9,73 @@
 #include <sys/types.h> // for pid_t
 #include <sys/wait.h> // for wait()
 
-#define MAX_JOBS 1024
+
+
+
+//--------------------------------------------------------PART 2-------------------------------------------------
+#define MAX_JOBS 100
 
 // Structure to keep track of background jobs
 struct job {
-    pid_t pid;
-    char *cmd;
-    int running;
+    pid_t pid;          // process ID
+    char *command;      // Process command
+    int status;         // Flag to check if running or finished
 };
 
 // Global array to store background jobs
-struct job jobs[MAX_JOBS];
-int job_count = 0;
+struct job jobs[MAX_JOBS];                
+int job_count = 0;             //Track number of jobs and position in table
+
+
+
+// Add a new job to the jobs array
+void add_job(pid_t pid, char *command) {
+    if (job_count < MAX_JOBS) {
+        jobs[job_count].pid = pid;
+        jobs[job_count].command = strdup(command);
+        jobs[job_count].status = 1;               // 1 For running process
+        job_count++;
+        printf("[JOB ID = %d] Added in background list\n", pid);
+    } else {
+        printf("Maximum number of background jobs reached.\n");
+    }
+}
+
+// Update job statuses and display them
+void print_jobs() {
+    printf("------------------Background jobs------------------\n");
+    for (int i = 0; i < job_count; i++) {
+        //Check if job finished before printing
+        // Waitpid options: WNOHANG makes call non blocking, return if process not finished
+        int status;
+        pid_t result = waitpid(jobs[i].pid, &status, WNOHANG);
+        if (result == 0) {
+            // Job still running
+            printf("[JOB ID = %d] Running: %s\n", jobs[i].pid, jobs[i].command);
+        } else if (result == jobs[i].pid) {
+            // The job has finished
+            jobs[i].status = 0;
+            printf("[JOB ID = %d] Finished: %s\n", jobs[i].pid, jobs[i].command);
+        
+
+        //free memory for command string
+        free(jobs[i].command);
+
+        //Delete job in array by shifting all jobs left by one position
+        for(int j = i ; j<job_count;j++){
+            jobs[j]=jobs[j+1];
+
+        }
+
+        //Decrease job count
+        job_count--;
+        
+        } else if(result==-1){
+            perror("Check of job status failed");
+        }
+    }
+}
+
 
 void terminate(char *line) {
     if (line)
@@ -29,34 +84,6 @@ void terminate(char *line) {
     exit(0);
 }
 
-// Add a new job to the jobs array
-void add_job(pid_t pid, char *cmd) {
-    if (job_count < MAX_JOBS) {
-        jobs[job_count].pid = pid;
-        jobs[job_count].cmd = strdup(cmd);
-        jobs[job_count].running = 1;
-        job_count++;
-    } else {
-        printf("Maximum number of background jobs reached.\n");
-    }
-}
-
-// Update job statuses and display them
-void list_jobs() {
-    printf("Background jobs:\n");
-    for (int i = 0; i < job_count; i++) {
-        int status;
-        pid_t result = waitpid(jobs[i].pid, &status, WNOHANG);
-        if (result == 0) {
-            // The job is still running
-            printf("[%d] %d Running: %s\n", i + 1, jobs[i].pid, jobs[i].cmd);
-        } else if (result == jobs[i].pid) {
-            // The job has finished
-            jobs[i].running = 0;
-            printf("[%d] %d Finished: %s\n", i + 1, jobs[i].pid, jobs[i].cmd);
-        }
-    }
-}
 
 /* Read a line from standard input and put it in a char[] */
 char* readline(const char *prompt) {
@@ -90,11 +117,14 @@ int main(void) {
         int i, j;
         char *prompt = "myshell>";
 
+        /* Readline use some internal memory structure that
+        can not be cleaned at the end of the program. Thus one memory 
+        leak per command seems unavoidable*/
         line = readline(prompt);
         if (line == 0 || !strncmp(line, "exit", 4)) {
             terminate(line);
         } else if (!strncmp(line, "jobs", 4)) {
-            list_jobs(); // Call the jobs function when "jobs" command is entered
+            print_jobs(); // PART 2: Call the jobs function when "jobs" command is entered
             continue;
         } else {
             l = parsecmd(&line);
@@ -108,32 +138,41 @@ int main(void) {
                 if (l->out != 0) printf("out: %s\n", l->out);
                 printf("bg: %d\n", l->bg);
 
-                pid_t pid = fork();
-                printf("A child has been created\n");
+
+
+
+//------------------------------------------------------PART 1&2 -----------------------------------
+                
+                
 
                 for (i = 0; l->seq[i] != 0; i++) {
-                    char **cmd = l->seq[i];
+                    char **command = l->seq[i];
                     printf("seq[%d]: ", i);
-                    for (j = 0; cmd[j] != 0; j++) {
-                        printf("'%s' ", cmd[j]);
+                    for (j = 0; command[j] != 0; j++) {
+                        printf("'%s' ", command[j]);
                     }
                     printf("\n");
-
+                    printf("PARENT ID = %d\n",(int)getppid());
+                    pid_t pid = fork();
                     if (pid == 0) { // In Child process 
-                        if (execvp(cmd[0], cmd) == -1) {
+                        if (execvp(command[0], command) == -1) {
                             perror("execvp failed");
                             exit(EXIT_FAILURE);
                         }
                     } else if (pid > 0) { // In Parent process
-                        if (!l->bg) {
+                        if (!l->bg) {   // Not a background process
                             int status;
+                            printf("Command beign executed by Child %d\n", pid);
                             waitpid(pid, &status, 0);
+                            printf("Command completed by Child %d\n", pid);
                         } else {
-                            printf("Started background process with PID: %d\n", pid);
-                            add_job(pid, cmd[0]); // Add the background job
+                            // bg = 0: Background process since entered command followed by &
+                            printf("[JOB ID = %d]Started in background\n", pid);
+                            add_job(pid, command[0]); // Add the background job
                         }
                     } else {
                         perror("fork failed");
+                        exit(1);
                     }
                 }
             }
