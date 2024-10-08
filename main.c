@@ -20,7 +20,7 @@ char *command;       // Process command
 int status;         // Flag to check if running or finished
 };
 
-struct job *job_table[JOBS_LIST_SIZE]={NULL}; // array of pointers to job struct
+struct job jobs[JOBS_LIST_SIZE]; // array of pointers to job struct
 int job_count = 0; // Track number of jobs and their position in table
 
 // Adding a process in list of background processes
@@ -29,24 +29,14 @@ void add_job(pid_t pid, char *command){
     if (job_count >= JOBS_LIST_SIZE){
     fprintf(stderr, "Exceeds maximum capacity of background jobs\n");
     exit(1);
-}
-    //Allocate memory for a job struct
-    struct job *new_job = (struct job *)malloc(sizeof(struct job));
-    if (new_job == NULL) {
-        perror("malloc failed");
-        exit(1);
-    }
-
-    //Create a new background job 
-    new_job->pid = pid;
-    new_job->command = strdup(command);   // copied command passed
-    new_job->status = 1; // 1 for running process
-
-    // Add the job to the next available slot
-    job_table[job_count] = new_job;
-    job_count++;  // Increment the job count and go to next position of table
+}else {
+       jobs[job_count].pid = pid;
+       jobs[job_count].command=strdup(command);
+       jobs[job_count].status=1; // 1 for running
+       job_count++;
     printf("Job added with PID: %d at index: %d\n", pid, job_count - 1);
-    
+
+}
 
 }
 
@@ -55,44 +45,42 @@ void add_job(pid_t pid, char *command){
 void print_jobs(){
 printf("\n------LIST OF JOBS IN BACKGROUNG--------:\n");
     for (int i = 0; i < job_count; i++) {
+        //check if jobs finished before printinf
+        int status;
+        //Options: WNOHANG makes call non-blocking, return if child not finished yet 
+        pid_t check_result = waitpid(jobs[i].pid,&status,WNOHANG);    
+        if(check_result==0){
+            //job running
+            printf("\n[JOB ID = %d] %s --> Running\n", jobs[i].pid, jobs[i].command);
+        } else if(check_result==jobs[i].pid){
+            //job finished
+            jobs[i].status = 0; //0 for finished
+            printf("\n[JOB ID = %d] %s --> DONE \n", jobs[i].pid, jobs[i].command);
+
+            //free memory for command string
+            free(jobs[i].command);
+
+            //Delete job in array by shifting all jobs left by one position
+            for(int j=i;j<job_count-1;j++){
+                jobs[j]=jobs[j+1];
+            }
+            //Decrease job count
+            job_count--;
+
+
+        } else if(check_result==-1){
+            printf("\n[JOB ID = %d]", jobs[i].pid);
+            perror(" Check of Background job status failed");
+            i++; // Don't get stuck, move to the next job to check its status
+        }
         
-        if (job_table[i] != NULL && job_table[i]->status) {
-            printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, job_table[i]->pid, job_table[i]->command,
-                   job_table[i]->status ? "Running" : "Finished");
-        }
     }
 }
 
 
-// Flag a job as Finished and return it's index to directly delete with index
-int job_finished(pid_t pid) {
-    for (int i = 0; i < job_count; i++) {
-        if (job_table[i] != NULL && job_table[i]->pid == pid) {
-            
-            job_table[i]->status = 0;  // Mark the job as finished
-            printf("Index: %d, PID: %d | Command: %s | Status: %s\n", i, job_table[i]->pid, job_table[i]->command,
-                   job_table[i]->status ? "Running" : "Finished");
-        }            return i;  // return index of finished job
-        }
-return -1; // return if no job with given pid
-}
 
 
-//Delete a job in the list when finished according to index
-void delete_job(int index) {
-   //check if index exists
-    if (index < 0 || index >= job_count || job_table[index] == NULL) {
-        fprintf(stderr, "Error: Invalid job index.\n");
-        return;
-    }
 
-    struct job *job_to_delete = job_table[index];
-    free(job_to_delete->command);  // Free the memory for the command string
-    free(job_to_delete);  // Free the job struct itself
-    job_table[index] = NULL;  // Set the job slot to NULL
-
-    printf("Job at index %d deleted.\n", index);
-}
 
 
 
@@ -105,18 +93,17 @@ void delete_job(int index) {
 void terminate(char *line) {
     if (line)
         free(line); //release memory allocated to line pointer
-    printf("bye\n");
+    
 
-// Free all jobs in the table
+// Free all jobs in the array
     for (int i = 0; i < job_count; i++) {
-        if (job_table[i] != NULL) {
-            free(job_table[i]->command);
-            free(job_table[i]);
+        if (jobs[i].command) {
+            free(jobs[i].command);
         }
     }
 
 
-    
+    printf("bye\n");
     exit(0);
 }
 
@@ -221,24 +208,14 @@ int main(void) {
                         int status;
                         waitpid(pid, &status, 0); // Wait for the child process to finish
                         printf("\nCommand Complete by Child %d with status: %d\n", pid, status);
-                        
-                        //take index of finished job to directly delete
-                        int index = job_finished(pid);
-                        if(index >=0){
-                            //minimum index is 0
-                            printf("\nproblem here\n");
-                            delete_job(index);
-                        }
-                        
-                        
-                        
+                       
                         
                     } else {
                         // bg == 0, command followed by & meaning should run in background
                         printf("Started background process with PID: %d\n", pid); // Notify about background process
 
                         add_job(pid,line); 
-                        printf("\nproblem here\n");
+                        
                     }
                 } else {
                     perror("fork failed"); // Error handling for fork
