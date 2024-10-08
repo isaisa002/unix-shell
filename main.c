@@ -155,6 +155,40 @@ int main(void) {
                     printf("PARENT ID = %d\n",(int)getppid());
                     pid_t pid = fork();
                     if (pid == 0) { // In Child process 
+
+                        //PART 3: HANDLE INPUT REDIRECTION
+                        if (l->in != 0) {
+                int fd_in = open(l->in, O_RDONLY);
+                if (fd_in == -1) {
+                    perror("Error opening input file");
+                    exit(EXIT_FAILURE);
+                }
+                if (dup2(fd_in, STDIN_FILENO) == -1) {
+                    perror("Error redirecting input");
+                    exit(EXIT_FAILURE);
+                }
+                close(fd_in);
+            }
+
+                        //PART 3: HANDLE OUTPUT REDIRECTION
+                           if (l->out != 0) {
+                int fd_out = open(l->out, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+                if (fd_out == -1) {
+                    perror("Error opening output file");
+                    exit(EXIT_FAILURE);
+                }
+                if (dup2(fd_out, STDOUT_FILENO) == -1) {
+                    perror("Error redirecting output");
+                    exit(EXIT_FAILURE);
+                }
+                close(fd_out);
+            }
+                        
+
+
+
+
+                        //PART1: Execute the command
                         if (execvp(command[0], command) == -1) {
                             perror("execvp failed");
                             exit(EXIT_FAILURE);
