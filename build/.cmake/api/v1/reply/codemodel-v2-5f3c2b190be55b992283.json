@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build",
-		"source" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell"
+		"build" : "/home/isacharles/346_A1/unix-shell/build",
+		"source" : "/home/isacharles/346_A1/unix-shell"
 	},
 	"version" : 
 	{

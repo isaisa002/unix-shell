@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell
+CMAKE_SOURCE_DIR = /home/isacharles/346_A1/unix-shell
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build
+CMAKE_BINARY_DIR = /home/isacharles/346_A1/unix-shell/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/unix_shell.dir/depend.make
@@ -70,46 +70,46 @@ include CMakeFiles/unix_shell.dir/progress.make
 include CMakeFiles/unix_shell.dir/flags.make
 
 CMakeFiles/unix_shell.dir/main.c.o: CMakeFiles/unix_shell.dir/flags.make
-CMakeFiles/unix_shell.dir/main.c.o: /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/main.c
+CMakeFiles/unix_shell.dir/main.c.o: /home/isacharles/346_A1/unix-shell/main.c
 CMakeFiles/unix_shell.dir/main.c.o: CMakeFiles/unix_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/unix_shell.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unix_shell.dir/main.c.o -MF CMakeFiles/unix_shell.dir/main.c.o.d -o CMakeFiles/unix_shell.dir/main.c.o -c /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/isacharles/346_A1/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/unix_shell.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unix_shell.dir/main.c.o -MF CMakeFiles/unix_shell.dir/main.c.o.d -o CMakeFiles/unix_shell.dir/main.c.o -c /home/isacharles/346_A1/unix-shell/main.c
 
 CMakeFiles/unix_shell.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unix_shell.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/main.c > CMakeFiles/unix_shell.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/isacharles/346_A1/unix-shell/main.c > CMakeFiles/unix_shell.dir/main.c.i
 
 CMakeFiles/unix_shell.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unix_shell.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/main.c -o CMakeFiles/unix_shell.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/isacharles/346_A1/unix-shell/main.c -o CMakeFiles/unix_shell.dir/main.c.s
 
 CMakeFiles/unix_shell.dir/parser.c.o: CMakeFiles/unix_shell.dir/flags.make
-CMakeFiles/unix_shell.dir/parser.c.o: /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/parser.c
+CMakeFiles/unix_shell.dir/parser.c.o: /home/isacharles/346_A1/unix-shell/parser.c
 CMakeFiles/unix_shell.dir/parser.c.o: CMakeFiles/unix_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/unix_shell.dir/parser.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unix_shell.dir/parser.c.o -MF CMakeFiles/unix_shell.dir/parser.c.o.d -o CMakeFiles/unix_shell.dir/parser.c.o -c /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/isacharles/346_A1/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/unix_shell.dir/parser.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unix_shell.dir/parser.c.o -MF CMakeFiles/unix_shell.dir/parser.c.o.d -o CMakeFiles/unix_shell.dir/parser.c.o -c /home/isacharles/346_A1/unix-shell/parser.c
 
 CMakeFiles/unix_shell.dir/parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unix_shell.dir/parser.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/parser.c > CMakeFiles/unix_shell.dir/parser.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/isacharles/346_A1/unix-shell/parser.c > CMakeFiles/unix_shell.dir/parser.c.i
 
 CMakeFiles/unix_shell.dir/parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unix_shell.dir/parser.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/parser.c -o CMakeFiles/unix_shell.dir/parser.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/isacharles/346_A1/unix-shell/parser.c -o CMakeFiles/unix_shell.dir/parser.c.s
 
 CMakeFiles/unix_shell.dir/utils.c.o: CMakeFiles/unix_shell.dir/flags.make
-CMakeFiles/unix_shell.dir/utils.c.o: /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/utils.c
+CMakeFiles/unix_shell.dir/utils.c.o: /home/isacharles/346_A1/unix-shell/utils.c
 CMakeFiles/unix_shell.dir/utils.c.o: CMakeFiles/unix_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/unix_shell.dir/utils.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unix_shell.dir/utils.c.o -MF CMakeFiles/unix_shell.dir/utils.c.o.d -o CMakeFiles/unix_shell.dir/utils.c.o -c /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/isacharles/346_A1/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/unix_shell.dir/utils.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unix_shell.dir/utils.c.o -MF CMakeFiles/unix_shell.dir/utils.c.o.d -o CMakeFiles/unix_shell.dir/utils.c.o -c /home/isacharles/346_A1/unix-shell/utils.c
 
 CMakeFiles/unix_shell.dir/utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unix_shell.dir/utils.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/utils.c > CMakeFiles/unix_shell.dir/utils.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/isacharles/346_A1/unix-shell/utils.c > CMakeFiles/unix_shell.dir/utils.c.i
 
 CMakeFiles/unix_shell.dir/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unix_shell.dir/utils.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/utils.c -o CMakeFiles/unix_shell.dir/utils.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/isacharles/346_A1/unix-shell/utils.c -o CMakeFiles/unix_shell.dir/utils.c.s
 
 # Object files for target unix_shell
 unix_shell_OBJECTS = \
@@ -125,7 +125,7 @@ unix_shell: CMakeFiles/unix_shell.dir/parser.c.o
 unix_shell: CMakeFiles/unix_shell.dir/utils.c.o
 unix_shell: CMakeFiles/unix_shell.dir/build.make
 unix_shell: CMakeFiles/unix_shell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable unix_shell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/isacharles/346_A1/unix-shell/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable unix_shell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unix_shell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +137,6 @@ CMakeFiles/unix_shell.dir/clean:
 .PHONY : CMakeFiles/unix_shell.dir/clean
 
 CMakeFiles/unix_shell.dir/depend:
-	cd /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/CMakeFiles/unix_shell.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/isacharles/346_A1/unix-shell/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/isacharles/346_A1/unix-shell /home/isacharles/346_A1/unix-shell /home/isacharles/346_A1/unix-shell/build /home/isacharles/346_A1/unix-shell/build /home/isacharles/346_A1/unix-shell/build/CMakeFiles/unix_shell.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/unix_shell.dir/depend
 

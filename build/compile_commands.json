@@ -1,20 +1,20 @@
 [
 {
-  "directory": "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build",
-  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/main.c.o -c /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/main.c",
-  "file": "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/main.c",
+  "directory": "/home/isacharles/346_A1/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/main.c.o -c /home/isacharles/346_A1/unix-shell/main.c",
+  "file": "/home/isacharles/346_A1/unix-shell/main.c",
   "output": "CMakeFiles/unix_shell.dir/main.c.o"
 },
 {
-  "directory": "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build",
-  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/parser.c.o -c /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/parser.c",
-  "file": "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/parser.c",
+  "directory": "/home/isacharles/346_A1/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/parser.c.o -c /home/isacharles/346_A1/unix-shell/parser.c",
+  "file": "/home/isacharles/346_A1/unix-shell/parser.c",
   "output": "CMakeFiles/unix_shell.dir/parser.c.o"
 },
 {
-  "directory": "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build",
-  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/utils.c.o -c /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/utils.c",
-  "file": "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/utils.c",
+  "directory": "/home/isacharles/346_A1/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/utils.c.o -c /home/isacharles/346_A1/unix-shell/utils.c",
+  "file": "/home/isacharles/346_A1/unix-shell/utils.c",
   "output": "CMakeFiles/unix_shell.dir/utils.c.o"
 }
 ]

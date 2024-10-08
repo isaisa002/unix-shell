@@ -1,4 +1,4 @@
-# Install script for directory: /home/isabelle/Downloads/COEN346_A1_PART2/unix-shell
+# Install script for directory: /home/isacharles/346_A1/unix-shell
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -57,6 +57,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/isacharles/346_A1/unix-shell/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

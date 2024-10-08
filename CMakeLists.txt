@@ -8,4 +8,5 @@ add_executable(unix_shell main.c
         parser.h
         utils.c
         utils.h
+        
 )

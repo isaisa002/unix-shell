@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build"
+			"value" : "/home/isacharles/346_A1/unix-shell/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -175,7 +175,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-13"
+			"value" : "/usr/bin/gcc-ar-11"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -191,7 +191,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-13"
+			"value" : "/usr/bin/gcc-ranlib-11"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -288,18 +288,6 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "CMAKE_DLLTOOL-NOTFOUND"
-		},
-		{
-			"name" : "CMAKE_EDIT_COMMAND",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to cache edit program executable."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/local/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -427,7 +415,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build/CMakeFiles/pkgRedirects"
+			"value" : "/home/isacharles/346_A1/unix-shell/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -487,7 +475,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell"
+			"value" : "/home/isacharles/346_A1/unix-shell"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1051,7 +1039,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell/build"
+			"value" : "/home/isacharles/346_A1/unix-shell/build"
 		},
 		{
 			"name" : "unix_shell_IS_TOP_LEVEL",
@@ -1075,7 +1063,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/isabelle/Downloads/COEN346_A1_PART2/unix-shell"
+			"value" : "/home/isacharles/346_A1/unix-shell"
 		}
 	],
 	"kind" : "cache",
