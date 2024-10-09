@@ -233,7 +233,7 @@ int main(void) {
                         // currently at cmd1
                         if (l->seq[i + 1] != 0) {
                             close(pipe_fds[1]);     // Close write part of cmd1
-                            prev_fd = pipe_fds[0];  // Save read end for next command
+                            prev_cmd = pipe_fds[0];  // Save read end for next command
                         }
 
                     } else {
