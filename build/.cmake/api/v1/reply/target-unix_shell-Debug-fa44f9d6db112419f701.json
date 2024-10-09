@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/unix_shell.exe"
-		},
-		{
-			"path" : "RelWithDebInfo/unix_shell.pdb"
+			"path" : "unix_shell"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /O2 /Ob1 /DNDEBUG -std:c11 -MD -Zi"
+					"fragment" : "-g -std=gnu11"
 				}
 			],
 			"language" : "C",
@@ -58,34 +55,24 @@
 			]
 		}
 	],
-	"dependencies" : 
-	[
-		{
-			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
-		}
-	],
 	"id" : "unix_shell::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /O2 /Ob1 /DNDEBUG -MD -Zi",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
-				"role" : "libraries"
 			}
 		],
 		"language" : "C"
 	},
 	"name" : "unix_shell",
-	"nameOnDisk" : "unix_shell.exe",
+	"nameOnDisk" : "unix_shell",
 	"paths" : 
 	{
 		"build" : ".",
