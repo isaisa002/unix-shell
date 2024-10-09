@@ -108,7 +108,7 @@ int main(void) {
         struct cmdline *l;
         char *line = 0;
         int i, j;
-        char *prompt = "myshell>";
+        char *prompt = "\nmyshell>";
 
         /* Readline use some internal memory structure that
         can not be cleaned at the end of the program. Thus one memory
