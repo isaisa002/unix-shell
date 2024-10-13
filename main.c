@@ -6,7 +6,7 @@
 #include <sys/types.h>  // for pid_t
 #include <sys/wait.h>   // for wait()
 #include <unistd.h>     // for fork(), execvp(), dup(), dup2(), close()
-
+#define MAX_PIPES 10    // up to 11 command pipelines
 #include "parser.h"
 #include "utils.h"
 
@@ -131,6 +131,29 @@ int main(void) {
                 if (l->in != 0) printf("in: %s\n", l->in);
                 if (l->out != 0) printf("out: %s\n", l->out);
                 printf("bg: %d\n", l->bg);
+// yimika adjusted
+// ---------------------------------------------------PART 5 START----------------------------------------
+                // Count the number of commands
+                int cmd_count = 0;
+                while (l->seq[cmd_count] != 0) cmd_count++;
+                // Create pipes for multiple commands if needed
+                int multi_pipe_fds[MAX_PIPES][2];
+                if (cmd_count > 2) {
+                    if (cmd_count - 1 > MAX_PIPES) {
+                        fprintf(stderr, "Error: Too many commands in pipeline. Maximum is %d.\n", MAX_PIPES + 1);
+                        exit(EXIT_FAILURE);
+                    }
+                    for (int i = 0; i < cmd_count - 1; i++) {
+                        if (pipe(multi_pipe_fds[i]) == -1) {
+                            perror("pipe failed");
+                            exit(EXIT_FAILURE);
+                        }
+                    }
+                }
+
+    
+// ---------------------------------------------------PART 5 END----------------------------------------
+//yimika stopped
 
 // ---------------------------------------------------PART4----------------------------------------
 
@@ -181,6 +204,24 @@ int main(void) {
                             dup2(prev_cmd, STDIN_FILENO);
                             close(prev_cmd);  // Close file descriptor for previous pipe
                         }
+                        */
+
+// ---------------------------------------------------PART 5 START----------------------------------------
+                        // Handle multiple pipes
+                        else if (cmd_count > 2) {
+                            if (i > 0) {
+                                dup2(multi_pipe_fds[i-1][0], STDIN_FILENO);
+                            }
+                            if (i < cmd_count - 1) {
+                                dup2(multi_pipe_fds[i][1], STDOUT_FILENO);
+                            }
+                            // Close all pipe file descriptors
+                            for (int j = 0; j < cmd_count - 1; j++) {
+                                close(multi_pipe_fds[j][0]);
+                                close(multi_pipe_fds[j][1]);
+                            }
+                        }
+// ---------------------------------------------------PART 5 END----------------------------------------
 
         // PART 3: HANDLE INPUT REDIRECTION
                         if (l->in != 0) {
@@ -235,13 +276,36 @@ int main(void) {
                             close(pipe_fds[1]);     // Close write part of cmd1
                             prev_cmd = pipe_fds[0];  // Save read end for next command
                         }
+// ---------------------------------------------------PART 5 START----------------------------------------
+                        // Close used pipe ends for multiple pipes
+                        else if (cmd_count > 2) {
+                            if (i > 0) {
+                                close(multi_pipe_fds[i-1][0]);
+                            }
+                            if (i < cmd_count - 1) {
+                                close(multi_pipe_fds[i][1]);
+                            }
+                        }
+// ---------------------------------------------------PART 5 END----------------------------------------
 
                     } else {
                         perror("fork failed");
                         exit(1);
                     }
                 }
+
+// ---------------------------------------------------PART 5 START----------------------------------------
+                // Close any remaining pipe file descriptors for multiple pipes
+                if (cmd_count > 2) {
+                    for (int i = 0; i < cmd_count - 1; i++) {
+                        close(multi_pipe_fds[i][0]);
+                        close(multi_pipe_fds[i][1]);
+                    }
+                }
+// ---------------------------------------------------PART 5 END----------------------------------------
+
             }
         }
     }
 }
+
