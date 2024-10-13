@@ -132,7 +132,7 @@ int main(void) {
                 if (l->out != 0) printf("out: %s\n", l->out);
                 printf("bg: %d\n", l->bg);
 
-// ---------------------------------------------------PART4----------------------------------------
+// ---------------------------------------------------PART4-5----------------------------------------
 
                 /*To hold pipe file descriptors:
                         pipe_fds[0]:  Read part of pipe
@@ -141,7 +141,7 @@ int main(void) {
                 int prev_cmd = -1;  // Previous read end for chaining pipes
                                     // Initialized at -1 bcs first command don't have previous
 
-//------------------------------------------------------PART 1 to 4 -----------------------------------
+//------------------------------------------------------PART 1 to 5 -----------------------------------
 
                 // loop through each command in sequence and print it once
                 for (i = 0; l->seq[i] != 0; i++) {
@@ -154,7 +154,7 @@ int main(void) {
                     printf("\n");
                     printf("PARENT ID = %d\n", (int)getppid());
 
-        // PART 4: CREATE PIPE IF THERE'S ANOTHER COMMAND IN SEQUENCE
+        // PART 4-5: CREATE PIPE IF THERE'S ANOTHER COMMAND IN SEQUENCE
                     if (l->seq[i + 1] != 0) {
                         // Create a pipe and return error if failed
                         if (pipe(pipe_fds) == -1) {
@@ -166,7 +166,7 @@ int main(void) {
                     pid_t pid = fork();
                     if (pid == 0) {  // In Child process
 
-        // PART 4: SIMPLE PIPE: for cmnd1 | cmd2
+        // PART 4-5: SIMPLE PIPE: for cmnd1 | cmd2
 
                         // Currently at cmd1
                         if (l->seq[i + 1] != 0) {
@@ -229,7 +229,7 @@ int main(void) {
                             add_job(pid, command[0]);  // Add the background job
                         }
 
-        // PART 4: CLOSE
+        // PART 4-5: CLOSE
                         // currently at cmd1
                         if (l->seq[i + 1] != 0) {
                             close(pipe_fds[1]);     // Close write part of cmd1
