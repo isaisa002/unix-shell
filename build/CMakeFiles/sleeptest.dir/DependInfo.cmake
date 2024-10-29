@@ -8,9 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/isacharles/unix-shell/main.c" "CMakeFiles/unix_shell.dir/main.c.o" "gcc" "CMakeFiles/unix_shell.dir/main.c.o.d"
-  "/home/isacharles/unix-shell/parser.c" "CMakeFiles/unix_shell.dir/parser.c.o" "gcc" "CMakeFiles/unix_shell.dir/parser.c.o.d"
-  "/home/isacharles/unix-shell/utils.c" "CMakeFiles/unix_shell.dir/utils.c.o" "gcc" "CMakeFiles/unix_shell.dir/utils.c.o.d"
+  "/home/isacharles/unix-shell/build/sleeptest.c" "CMakeFiles/sleeptest.dir/sleeptest.c.o" "gcc" "CMakeFiles/sleeptest.dir/sleeptest.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,6 +1,5 @@
-CMakeFiles/unix_shell.dir/main.c.o: \
- /home/isacharles/346_A1/unix-shell/main.c /usr/include/stdc-predef.h \
- /usr/include/fcntl.h /usr/include/features.h \
+CMakeFiles/unix_shell.dir/main.c.o: /home/isacharles/unix-shell/main.c \
+ /usr/include/stdc-predef.h /usr/include/fcntl.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
@@ -91,5 +90,4 @@ CMakeFiles/unix_shell.dir/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /home/isacharles/346_A1/unix-shell/parser.h \
- /home/isacharles/346_A1/unix-shell/utils.h
+ /home/isacharles/unix-shell/parser.h /home/isacharles/unix-shell/utils.h

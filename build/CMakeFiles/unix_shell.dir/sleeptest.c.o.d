@@ -1,6 +1,6 @@
 CMakeFiles/unix_shell.dir/sleeptest.c.o: \
- /home/isacharles/346_A1/unix-shell/sleeptest.c \
- /usr/include/stdc-predef.h /usr/include/stdio.h \
+ /home/isacharles/unix-shell/build/sleeptest.c /usr/include/stdc-predef.h \
+ /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

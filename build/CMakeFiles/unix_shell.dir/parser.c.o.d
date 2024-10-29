@@ -1,7 +1,6 @@
 CMakeFiles/unix_shell.dir/parser.c.o: \
- /home/isacharles/346_A1/unix-shell/parser.c /usr/include/stdc-predef.h \
- /home/isacharles/346_A1/unix-shell/parser.h \
- /home/isacharles/346_A1/unix-shell/utils.h \
+ /home/isacharles/unix-shell/parser.c /usr/include/stdc-predef.h \
+ /home/isacharles/unix-shell/parser.h /home/isacharles/unix-shell/utils.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,12 +31,20 @@
 					"name" : "unix_shell",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
 			"targets" : 
 			[
+				{
+					"directoryIndex" : 0,
+					"id" : "sleeptest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sleeptest-Debug-c7471081365a7ae4bcf9.json",
+					"name" : "sleeptest",
+					"projectIndex" : 0
+				},
 				{
 					"directoryIndex" : 0,
 					"id" : "unix_shell::@6890427a1f51a3e7e1df",
@@ -49,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/isacharles/346_A1/unix-shell/build",
-		"source" : "/home/isacharles/346_A1/unix-shell"
+		"build" : "/home/isacharles/unix-shell/build",
+		"source" : "/home/isacharles/unix-shell"
 	},
 	"version" : 
 	{

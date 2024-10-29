@@ -1,20 +1,26 @@
 [
 {
-  "directory": "/home/isacharles/346_A1/unix-shell/build",
-  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/main.c.o -c /home/isacharles/346_A1/unix-shell/main.c",
-  "file": "/home/isacharles/346_A1/unix-shell/main.c",
+  "directory": "/home/isacharles/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/main.c.o -c /home/isacharles/unix-shell/main.c",
+  "file": "/home/isacharles/unix-shell/main.c",
   "output": "CMakeFiles/unix_shell.dir/main.c.o"
 },
 {
-  "directory": "/home/isacharles/346_A1/unix-shell/build",
-  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/parser.c.o -c /home/isacharles/346_A1/unix-shell/parser.c",
-  "file": "/home/isacharles/346_A1/unix-shell/parser.c",
+  "directory": "/home/isacharles/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/parser.c.o -c /home/isacharles/unix-shell/parser.c",
+  "file": "/home/isacharles/unix-shell/parser.c",
   "output": "CMakeFiles/unix_shell.dir/parser.c.o"
 },
 {
-  "directory": "/home/isacharles/346_A1/unix-shell/build",
-  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/utils.c.o -c /home/isacharles/346_A1/unix-shell/utils.c",
-  "file": "/home/isacharles/346_A1/unix-shell/utils.c",
+  "directory": "/home/isacharles/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/unix_shell.dir/utils.c.o -c /home/isacharles/unix-shell/utils.c",
+  "file": "/home/isacharles/unix-shell/utils.c",
   "output": "CMakeFiles/unix_shell.dir/utils.c.o"
+},
+{
+  "directory": "/home/isacharles/unix-shell/build",
+  "command": "/usr/bin/cc   -g -std=gnu11 -o CMakeFiles/sleeptest.dir/sleeptest.c.o -c /home/isacharles/unix-shell/build/sleeptest.c",
+  "file": "/home/isacharles/unix-shell/build/sleeptest.c",
+  "output": "CMakeFiles/sleeptest.dir/sleeptest.c.o"
 }
 ]

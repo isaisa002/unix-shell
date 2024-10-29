@@ -10,3 +10,4 @@ add_executable(unix_shell main.c
         utils.h
         
 )
+add_executable(sleeptest sleeptest.c)

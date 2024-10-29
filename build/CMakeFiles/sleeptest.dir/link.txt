@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/sleeptest.dir/sleeptest.c.o -o sleeptest

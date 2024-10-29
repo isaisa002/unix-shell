@@ -1,3 +1,4 @@
-/home/isacharles/346_A1/unix-shell/build/CMakeFiles/unix_shell.dir
-/home/isacharles/346_A1/unix-shell/build/CMakeFiles/edit_cache.dir
-/home/isacharles/346_A1/unix-shell/build/CMakeFiles/rebuild_cache.dir
+/home/isacharles/unix-shell/build/CMakeFiles/unix_shell.dir
+/home/isacharles/unix-shell/build/CMakeFiles/sleeptest.dir
+/home/isacharles/unix-shell/build/CMakeFiles/edit_cache.dir
+/home/isacharles/unix-shell/build/CMakeFiles/rebuild_cache.dir

@@ -54,16 +54,17 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/isacharles/346_A1/unix-shell
+CMAKE_SOURCE_DIR = /home/isacharles/unix-shell
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/isacharles/346_A1/unix-shell/build
+CMAKE_BINARY_DIR = /home/isacharles/unix-shell/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
 all: CMakeFiles/unix_shell.dir/all
+all: CMakeFiles/sleeptest.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/unix_shell.dir/clean
+clean: CMakeFiles/sleeptest.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,14 +83,14 @@ clean: CMakeFiles/unix_shell.dir/clean
 CMakeFiles/unix_shell.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unix_shell.dir/build.make CMakeFiles/unix_shell.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unix_shell.dir/build.make CMakeFiles/unix_shell.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/isacharles/346_A1/unix-shell/build/CMakeFiles --progress-num=1,2,3,4 "Built target unix_shell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/isacharles/unix-shell/build/CMakeFiles --progress-num=3,4,5,6 "Built target unix_shell"
 .PHONY : CMakeFiles/unix_shell.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/unix_shell.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/346_A1/unix-shell/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/unix-shell/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/unix_shell.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/346_A1/unix-shell/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/unix-shell/build/CMakeFiles 0
 .PHONY : CMakeFiles/unix_shell.dir/rule
 
 # Convenience name for target.
@@ -99,6 +101,32 @@ unix_shell: CMakeFiles/unix_shell.dir/rule
 CMakeFiles/unix_shell.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unix_shell.dir/build.make CMakeFiles/unix_shell.dir/clean
 .PHONY : CMakeFiles/unix_shell.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/sleeptest.dir
+
+# All Build rule for target.
+CMakeFiles/sleeptest.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/isacharles/unix-shell/build/CMakeFiles --progress-num=1,2 "Built target sleeptest"
+.PHONY : CMakeFiles/sleeptest.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sleeptest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/unix-shell/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sleeptest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/unix-shell/build/CMakeFiles 0
+.PHONY : CMakeFiles/sleeptest.dir/rule
+
+# Convenience name for target.
+sleeptest: CMakeFiles/sleeptest.dir/rule
+.PHONY : sleeptest
+
+# clean rule for target.
+CMakeFiles/sleeptest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/clean
+.PHONY : CMakeFiles/sleeptest.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

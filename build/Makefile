@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/isacharles/346_A1/unix-shell
+CMAKE_SOURCE_DIR = /home/isacharles/unix-shell
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/isacharles/346_A1/unix-shell/build
+CMAKE_BINARY_DIR = /home/isacharles/unix-shell/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/346_A1/unix-shell/build/CMakeFiles /home/isacharles/346_A1/unix-shell/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/unix-shell/build/CMakeFiles /home/isacharles/unix-shell/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/346_A1/unix-shell/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isacharles/unix-shell/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,6 +128,19 @@ unix_shell: cmake_check_build_system
 unix_shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unix_shell.dir/build.make CMakeFiles/unix_shell.dir/build
 .PHONY : unix_shell/fast
+
+#=============================================================================
+# Target rules for targets named sleeptest
+
+# Build rule for target.
+sleeptest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sleeptest
+.PHONY : sleeptest
+
+# fast build rule for target.
+sleeptest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/build
+.PHONY : sleeptest/fast
 
 main.o: main.c.o
 .PHONY : main.o
@@ -177,6 +190,30 @@ parser.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unix_shell.dir/build.make CMakeFiles/unix_shell.dir/parser.c.s
 .PHONY : parser.c.s
 
+sleeptest.o: sleeptest.c.o
+.PHONY : sleeptest.o
+
+# target to build an object file
+sleeptest.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/sleeptest.c.o
+.PHONY : sleeptest.c.o
+
+sleeptest.i: sleeptest.c.i
+.PHONY : sleeptest.i
+
+# target to preprocess a source file
+sleeptest.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/sleeptest.c.i
+.PHONY : sleeptest.c.i
+
+sleeptest.s: sleeptest.c.s
+.PHONY : sleeptest.s
+
+# target to generate assembly for a file
+sleeptest.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sleeptest.dir/build.make CMakeFiles/sleeptest.dir/sleeptest.c.s
+.PHONY : sleeptest.c.s
+
 utils.o: utils.c.o
 .PHONY : utils.o
 
@@ -209,6 +246,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... sleeptest"
 	@echo "... unix_shell"
 	@echo "... main.o"
 	@echo "... main.i"
@@ -216,6 +254,9 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
+	@echo "... sleeptest.o"
+	@echo "... sleeptest.i"
+	@echo "... sleeptest.s"
 	@echo "... utils.o"
 	@echo "... utils.i"
 	@echo "... utils.s"
